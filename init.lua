@@ -190,8 +190,11 @@ local config = {
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+	  ["<leader>td"] = { function() astronvim.toggle_term_cmd "lazydocker" end, desc = "ToggleTerm lazydocker"},
+	  ["<S-Enter>"] = {"O<ESC>j", desc = "Append blank line above"},
+	  ["<Enter>"] = {"o<ESC>k", desc = "Append blank line below"},
       -- quick save
-      -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+      ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
     t = {
       -- setting a mapping to false will disable it
@@ -288,6 +291,9 @@ local config = {
           -- third key is the key to bring up next level and its displayed
           -- group name in which-key top level menu
           ["b"] = { name = "Buffer" },
+		      ["t"] = {
+				    ["d"] = { "Toggle lazydocker" },
+			    },
         },
       },
     },
