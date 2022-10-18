@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "default_theme",
+  colorscheme = "catppuccin",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -190,9 +190,9 @@ local config = {
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-	  ["<leader>td"] = { function() astronvim.toggle_term_cmd "lazydocker" end, desc = "ToggleTerm lazydocker"},
-	  ["<S-Enter>"] = {"O<ESC>j", desc = "Append blank line above"},
-	  ["<Enter>"] = {"o<ESC>k", desc = "Append blank line below"},
+	    ["<leader>td"] = { function() astronvim.toggle_term_cmd "lazydocker" end, desc = "ToggleTerm lazydocker"},
+	    ["<S-Enter>"] = {"O<ESC>j", desc = "Append blank line above"},
+	    ["<Enter>"] = {"o<ESC>k", desc = "Append blank line below"},
       -- quick save
       ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -218,6 +218,29 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
+        {
+            "catppuccin/nvim",
+            as = "catppuccin",
+            config = function()
+              require("catppuccin").setup {}
+            end,
+          },
+        {
+          'CRAG666/code_runner.nvim',
+          requires = 'nvim-lua/plenary.nvim',
+          config = function()
+            require('code_runner').setup({
+              -- put here the commands by filetype
+              filetype = {
+                java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
+                python = "python -u",
+                typescript = "deno run",
+                rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
+                go = "cd $dir && go run $fileName"
+              },
+            })
+          end,
+        },
 
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
