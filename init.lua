@@ -194,8 +194,8 @@ local config = {
 	["<S-Enter>"] = {"O<ESC>j", desc = "Append blank line above"},
 	["<Enter>"] = {"o<ESC>k", desc = "Append blank line below"},
 	-- Code Runner
-    ["<leader>lr"] = {":RunCode", desc = "Compile and run Code"},
-    ["<leader>lc"] = {":RunClose", desc = "Close Code Runner"},
+    ["<leader>l9"] = {":RunCode<Enter>", desc = "Compile and run Code"},
+    ["<leader>lc"] = {":RunClose<Enter>", desc = "Close Code Runner"},
       -- quick save
     ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -236,16 +236,20 @@ local config = {
             require('code_runner').setup({
               -- put here the commands by filetype
               filetype = {
+                javascript = "node",
                 java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
-                python = "python -u",
-                typescript = "deno run",
-                rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
-                go = "cd $dir && go run $fileName",
-                lua = "echo \'test chuc nang\'"
+                c = "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+                cpp = "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+                php = "php",
+                python =  "python -u",
+                perl = "perl",
+                perl6 = "perl6",
+                ruby = "ruby",
+                go = "go run", 
               },
             })
           end,
-        }
+        },
 
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
