@@ -186,15 +186,18 @@ local config = {
     n = {
       -- second key is the lefthand side of the map
       -- mappings seen under group name "Buffer"
-      ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-      ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
-      ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
-      ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+    ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+    ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
+    ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
+    ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
 	["<leader>td"] = { function() astronvim.toggle_term_cmd "lazydocker" end, desc = "ToggleTerm lazydocker"},
 	["<S-Enter>"] = {"O<ESC>j", desc = "Append blank line above"},
 	["<Enter>"] = {"o<ESC>k", desc = "Append blank line below"},
+	-- Code Runner
+    ["<leader>lr"] = {":RunCode", desc = "Compile and run Code"},
+    ["<leader>lc"] = {":RunClose", desc = "Close Code Runner"},
       -- quick save
-      ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
     t = {
       -- setting a mapping to false will disable it
@@ -225,7 +228,24 @@ local config = {
               require("catppuccin").setup {}
             end,
           },
-        require "code_runner_cfg",
+        -- require "code_runner_cfg",
+         {
+          'CRAG666/code_runner.nvim',
+          requires = 'nvim-lua/plenary.nvim',
+          config = function()
+            require('code_runner').setup({
+              -- put here the commands by filetype
+              filetype = {
+                java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
+                python = "python -u",
+                typescript = "deno run",
+                rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
+                go = "cd $dir && go run $fileName",
+                lua = "echo \'test chuc nang\'"
+              },
+            })
+          end,
+        }
 
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
@@ -301,7 +321,7 @@ local config = {
           ["b"] = { name = "Buffer" },
 		      ["t"] = {
 				    ["d"] = { "Toggle lazydocker" },
-			    },
+		      },
         },
       },
     },
