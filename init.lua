@@ -250,6 +250,7 @@ local config = {
             })
           end,
         },
+        { 'fatih/vim-go' },
 
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
