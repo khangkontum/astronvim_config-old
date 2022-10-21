@@ -38,6 +38,7 @@ local config = {
     -- },
   },
 
+
   -- set vim options here (vim.<first_key>.<second_key> =  value)
   options = {
     opt = {
@@ -47,6 +48,10 @@ local config = {
       spell = false, -- sets vim.opt.spell
       signcolumn = "auto", -- sets vim.opt.signcolumn to auto
       wrap = false, -- sets vim.opt.wrap
+      textwidth = 80,
+      tabstop = 4,
+      shiftwidth = 4,
+      expandtab = true,
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
