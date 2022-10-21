@@ -211,6 +211,7 @@ local config = {
   },
 
   -- Configure plugins
+  -- @plugins
   plugins = {
     init = {
       -- You can disable default plugins as follows:
@@ -256,6 +257,7 @@ local config = {
           end,
         },
         { 'fatih/vim-go' },
+        { 'easymotion/vim-easymotion' },
 
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
