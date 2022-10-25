@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "catppuccin",
+  colorscheme = "dracula",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -227,13 +227,17 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-        {
-            "catppuccin/nvim",
-            as = "catppuccin",
-            config = function()
-              require("catppuccin").setup {}
-            end,
-          },
+        -- {
+        --     "catppuccin/nvim",
+        --     as = "catppuccin",
+        --     config = function()
+        --       require("catppuccin").setup {}
+        --     end,
+        --   },
+        { 
+            "dracula/vim",
+            as = "dracula",
+         },
         -- require "code_runner_cfg",
          {
           'CRAG666/code_runner.nvim',
