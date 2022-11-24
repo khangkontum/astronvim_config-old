@@ -53,6 +53,9 @@ local config = {
       shiftwidth = 4,
       expandtab = true,
     },
+    o = {
+        auto_reload = true,
+    },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
       cmp_enabled = true, -- enable completion at start
